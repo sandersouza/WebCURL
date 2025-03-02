@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="theme-color" content="#4caf50">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles/base.css">
+    <link rel="stylesheet" href="/static/styles/sidebar.css">
+    <link rel="stylesheet" href="/static/styles/editor.css">
+    <link rel="stylesheet" href="/static/styles/response.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>WebCURL Beta 1</title>
+</head>
+<body>
+    <div class="container">
+        <div class="queries-sidebar">
+            <div class="queries-header">
+                <h2 class="queries-title">Queries</h2>
+                <div class="queries-buttons">
+                    <button id="new-blank-query-btn" title="Create a new blank query">
+                        <i class="bi bi-plus-square-fill"></i>
+                    </button>
+                    <!-- Botão de exportação de queries -->
+                    <button id="export-query-btn" title="Export queries">
+                        <i class="bi bi-upload"></i>
+                    </button>
+                    <!-- Botão de importação de queries -->
+                    <button id="import-query-btn" title="Import queries">
+                        <i class="bi bi-download"></i>
+                    </button>
+                </div>
+            </div>
+            <ul id="queries-list">
+                {% for query in queries %}
+                <li class="query-item">
+                    <div class="query-row">
+                        <span>{{ query.name }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <!-- Lingueta para ocultar/exibir a sidebar -->
+            <div class="toggle-container">
+                <button id="toggle-sidebar-btn" title="Toggle sidebar" class="toggle-lingueta">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+            </div>
+        </div>        
+        
+        <!-- Editor de requisições -->
+        <div class="query-editor">
+            <!-- Configurações da requisição -->
+            <div class="request-config">
+                <button id="protocol-toggle-btn" class="protocol-toggle-btn" title="Toggle between HTTP and HTTP/3">HTTP</button>
+                <select id="query-method" aria-label="HTTP Method">
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                    <option value="COPY">COPY</option>
+                    <option value="HEAD">HEAD</option>
+                    <option value="OPTIONS">OPTIONS</option>
+                    <option value="LINK">LINK</option>
+                    <option value="UNLINK">UNLINK</option>
+                    <option value="PURGE">PURGE</option>
+                    <option value="LOCK">LOCK</option>
+                    <option value="UNLOCK">UNLOCK</option>
+                    <option value="PROPFIND">PROPFIND</option>
+                    <option value="VIEW">VIEW</option>
+                </select>
+                <input type="text" id="query-url" placeholder="API URL/URI" aria-label="API URL">
+            </div>
+            
+            <!-- Corpo e Headers -->
+            <textarea id="query-body" class="request-body-txt" placeholder="Request Body" aria-label="Request Body"></textarea>
+            
+            <div id="headers-container">
+                <table id="headers-table">
+                    <thead>
+                        <tr>
+                            <th class="header-property">Property</th>
+                            <th>Value</th>
+                            <th class="action-right-row"><i class="bi bi-list"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Linhas dinâmicas geradas automaticamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Token e Execução -->
+            <div class="request-action">
+                <input type="text" id="bearer-token" placeholder="Bearer Token" aria-label="Bearer Token">
+                <button id="save-query-btn" aria-label="Save Query">
+                    <i class="bi bi-floppy"></i>
+                </button>
+                <button id="execute-query-btn" aria-label="Execute Query">
+                    <i class="bi bi-arrow-return-right"></i>
+                </button>
+            </div>            
+            
+            <!-- Headers da Resposta -->
+            <div id="response-headers" class="response-headers" aria-live="polite">Response headers</div>
+            
+            <!-- JSON da Resposta -->
+            <pre id="response-output" class="json-highlight" aria-live="polite">Response</pre>
+        </div>
+    </div>
+
+    <!-- Mensagem de feedback -->
+    <div id="feedback-message" class="feedback-message hidden"></div>
+
+    <!-- Modal de entrada para query -->
+    <div id="query-modal" class="modal hidden">
+        <div class="modal-content">
+            <input type="text" class="modal-content inputbox" id="query-name-input" placeholder="Enter query name" aria-label="Query name" maxlength="20">
+            <button class="modal-content button" id="submit-query-btn" title="Save query">
+                <i class="bi bi-floppy"></i>
+            </button>
+            <button class="modal-content button esc" id="cancel-query-btn" title="Cancel">
+                <i class="bi bi-escape"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts divididos -->
+    <script src="/static/scripts/base.js"></script>
+    <script src="/static/scripts/protocol.js"></script>
+    <script src="/static/scripts/highlight.js"></script>
+    <script src="/static/scripts/query_manager.js"></script>
+    <script src="/static/scripts/sidebar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    <script src="/static/scripts/sortable_init.js"></script>
+    <script src="/static/scripts/export_queries.js"></script>
+    <script src="/static/scripts/import_queries.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* Editor */
+.query-editor {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-sizing: border-box;
+    min-width: 400px;
+    transition: margin-left 0.3s ease; /* Suaviza o ajuste ao ocultar a sidebar */
+    margin-left: 15px;
+}
+
+.queries-sidebar.hidden + .query-editor {
+    margin-left: -225px; /* Ajusta a posição do editor quando a sidebar está oculta */
+}
+
+.request-config, .request-action {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+#protocol-toggle-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#protocol-toggle-btn:hover {
+    background-color: #3e8e41;
+}
+
+#query-url, #bearer-token {
+    height: 38px;
+    background-color: #3e3e3e;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 0 10px;
+    width: 100%;
+}
+
+#query-method {
+    height: 40px;
+    background-color: #3e3e3e;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+textarea {
+    background-color: #3e3e3e;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    min-height: 150px;
+    resize: vertical;
+}
+
+.request-body-txt {
+    background-color: #3e3e3e;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    height: 50%;
+    resize: vertical;
+}
+
+#execute-query-btn {
+    height: 40px; /* Altura consistente com outros campos */
+    background-color: #4caf50; /* Cor de fundo verde */
+    color: white; /* Texto em branco */
+    border: none; /* Sem bordas */
+    padding: 5px 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de clique */
+    font-weight: bold; /* Texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+    width: 40px;
+}
+
+#execute-query-btn:hover {
+    background-color: #3e8e41; /* Cor mais escura ao passar o mouse */
+}
+
+#save-query-btn {
+    height: 40px; /* Altura consistente com outros botões */
+    background-color: #4caf50; /* Cor de fundo verde */
+    color: white; /* Texto em branco */
+    border: none; /* Sem bordas */
+    padding: 5px 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de clique */
+    font-weight: bold; /* Texto em negrito */
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+    width: 40px;
+}
+
+#save-query-btn:hover {
+    background-color: #3e8e41; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo para a tabela de headers */
+#headers-container {
+}
+
+#headers-table {
+    width: 100%;
+    border-collapse: separate; /* Permite divisões visíveis entre células */
+    border-spacing: 0; /* Remove espaçamento extra */
+    margin-bottom: 10px;
+    background-color: #3e3e3e; /* Fundo igual ao Request Body */
+    border: 0px solid #555; /* Mesma borda do Request Body */
+    border-radius: 5px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante bordas arredondadas para células internas */
+}
+
+#headers-table th, #headers-table td {
+    padding: 4px;
+    text-align: center;
+    font-size: small; /* Fonte pequena */
+    color: white; /* Cor da letra */
+    border: 1px solid #555; /* Divisão entre células */
+}
+
+#headers-table th {
+    background-color: #3e3e3e; /* Fundo igual ao Request Body */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    font-weight: bold; /* Negrito para destaque */
+}
+
+#headers-table td {
+    background-color: #1e1e1e;
+}
+
+#headers-table input {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#headers-table input:focus {
+    outline: none;
+    background-color: #555; /* Fundo ao focar */
+}
+
+/* Removido o botão de adicionar linha - comportamento agora é dinâmico */
+.remove-header-row {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-header-row:hover {
+    background-color: #d32f2f;
+}
+
+.action-right-row {
+    width: 60px;
+}
+.header-property {
+    width: 25%;
+}
