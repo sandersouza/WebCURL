@@ -10,7 +10,6 @@ with open("config.yml", "r") as config_file:
 
 # Inicializar o Flask
 app = Flask(__name__, template_folder="templates", static_folder="static")
-app.config["DEBUG"] = config["flask"]["debug"]
 
 # Registrar Blueprints
 app.register_blueprint(queries_bp)

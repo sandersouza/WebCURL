@@ -1,7 +1,3 @@
-mongodb:
-  uri: "mongodb://mongo:27017/"
-  database: "webcurl"
-
 flask:
   debug: false
   host: "0.0.0.0"
