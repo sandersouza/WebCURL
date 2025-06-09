@@ -1,7 +1,7 @@
 const CACHE_NAME = "webcurl-cache-v1";
 const urlsToCache = [
     "/", // Página principal
-    "/template/index.html",
+    "/templates/index.html",
     "/static/styles/base.css",
     "/static/styles/sidebar.css",
     "/static/styles/editor.css",
@@ -9,7 +9,9 @@ const urlsToCache = [
     "/static/scripts/sidebar.js",
     "/static/scripts/query_manager.js",
     "/static/scripts/protocol.js",
-    "/static/icons/favicon.ico"
+    "/static/favicon.ico",
+    "/static/icon-192x192.png",
+    "/static/icon-512x512.png"
 ];
 
 // Instalar o Service Worker e adicionar ao cache
